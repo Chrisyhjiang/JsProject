@@ -22,7 +22,6 @@ async function getMovies(url){
 }
 
 function showMovies(movies){
-    // main.innerHTML = '';
     movies.forEach((movie) => {
         const { title, poster_path, vote_average, overview} = movie;
 
@@ -64,7 +63,6 @@ form.addEventListener('submit', (e) => {
     if(searchTerm && searchTerm !== ''){
         main.innerHTML='';
         getMovies(SEARCH_API + searchTerm);
-        search.value='';
     }else {
         window.location.reload();
     }
@@ -78,7 +76,7 @@ window.addEventListener('scroll', () => {
             i++;
             let url = API_UI;
             if(search.value && search.value !== ''){
-                url = SEARCH_API;
+                url = SEARCH_API + search.value;
             }
             let spinner = document.getElementById("spinner");
             spinner.style.visibility = 'visible';
